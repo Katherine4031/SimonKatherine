@@ -5,10 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gui.components.Action;
-import gui.components.Button;
 import gui.components.TextLabel;
 import gui.components.Visible;
-import gui.sampleGames.ClickableScreen;
+import gui.components.ClickableScreen;
 
 public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 	
@@ -48,17 +47,17 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 	}
 
 	private void playSequence() {
-		ButtonInterfaceKatherine b;
+		ButtonInterfaceKatherine b = null;
 		for(int i = 0; i < sequence.size(); i++){
 			if(b != null){
-				dim();
+				b.dim();
 			}
 			//b = sequence[i].getButton();
 			b.highlight();
 			
 			int sleepTime;
 			try{
-				//equation?
+				Thread.sleep(1000);
 			}catch(InterruptedException e){
 				e.printStackTrace();
 			}
@@ -92,13 +91,18 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 	}
 
 	private MoveInterfaceKatherine randomMove() {
-		Button b;
+		ButtonInterfaceKatherine b = new Button(0, 0, 100, 100);
 		int rndIdx = (int)(Math.random()*button.length);
 		
 		while(rndIdx == lastSelectedButton){
 			rndIdx = (int)(Math.random()*button.length);
 		}
 		return getMove(b);
+	}
+
+	private MoveInterfaceKatherine getMove(ButtonInterfaceKatherine b) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private ProgressInterfaceKatherine getProgress() {

@@ -12,5 +12,6 @@ public interface ButtonInterfaceKatherine extends Clickable {
 	public void setColor(Color c);
 	public void setAction(Action a);
 	public void highlight();
+	public void dim();
 		
 }
