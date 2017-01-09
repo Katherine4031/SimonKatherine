@@ -15,6 +15,8 @@ public class Button extends Component implements ButtonInterfaceKatherine {
 
 	private Color color;
 	private Color displayColor;
+	private int x;
+	private int y;
 	
 	public void setX(int x) {
 		this.x = x;
