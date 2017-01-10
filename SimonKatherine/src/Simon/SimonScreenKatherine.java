@@ -48,11 +48,12 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 
 	private void playSequence() {
 		ButtonInterfaceKatherine b = null;
-		for(int i = 0; i < sequence.size(); i++){
+		for(MoveInterfaceKatherine m : sequence){
 			if(b != null){
 				b.dim();
 			}
-			//b = sequence[i].getButton();
+			
+			b = m.getButton();
 			b.highlight();
 			
 			int sleepTime;
@@ -77,7 +78,7 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		addButtons(viewObjects);
+		addButtons();
 		progress = getProgress();
 		label = new TextLabel(130,230,300,40,"Let's play Simon!");
 		sequence = new ArrayList<MoveInterfaceKatherine>();
@@ -97,73 +98,70 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 		while(rndIdx == lastSelectedButton){
 			rndIdx = (int)(Math.random()*button.length);
 		}
-		return getMove(b);
-	}
-
-	private MoveInterfaceKatherine getMove(ButtonInterfaceKatherine b) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Move(b);
 	}
 
 	private ProgressInterfaceKatherine getProgress() {
-		/**
-		Placeholder until partner finishes implementation of ProgressInterface
-		*/
-		return null;
+		return new Progress();
 	}
 
-	private void addButtons(List<Visible> viewObjects) {
+	private void addButtons() {
 		int numberOfButtons = 5;
+		button = new ButtonInterfaceKatherine[numberOfButtons];
 		Color[] colors = {Color.blue, Color.red, Color.yellow, Color.green, Color.black};
 		for(int i = 0; i < numberOfButtons; i++){
-			final ButtonInterfaceKatherine b = getAButton();
-			//circle
-			b.setColor(colors[i]);
-			b.setX(0);
-			b.setY(0);
+			//optional: circle
+			button[i] = getAButton();
+			button[i].setColor(colors[i]);
+			//change position of i
+			button[i].setX(0);
+			button[i].setY(0);
 			
-			b.setAction(new Action(){
+			final ButtonInterfaceKatherine b = button[i];
+			
+			button[i].setAction(new Action(){
 
 				public void act(){
 					
-				}
-			});
-			
-			if(acceptingInput){
-				Thread blink = new Thread(new Runnable(){
+					if(acceptingInput){
+						Thread blink = new Thread(new Runnable(){
 
-					public void run(){
-						b.highlight();
-						try{
-							Thread.sleep(800);
-						}catch(InterruptedException e){
-							e.printStackTrace();
-						}
-					}
-					//b.dim();
+							public void run(){
+								b.highlight();
+								try{
+									Thread.sleep(800);
+								}catch(InterruptedException e){
+									e.printStackTrace();
+								}
+								b.dim();
+							}	
 					
-				});
-				blink.start();
-			}
+						});
+						blink.start();
+					}
 			
-			if(b == sequence.get(sequenceIndex).getButton()){
-				sequenceIndex++;
-			}
-			else{
-				progress.gameOver();
-			}
+					if(b == sequence.get(sequenceIndex).getButton()){
+						sequenceIndex++;
+					}
+					else{
+						progress.gameOver();
+						return;
+					}
 			
-			if(sequenceIndex == sequence.size()){
-				Thread nextRound = new Thread(SimonScreenKatherine.this);
-				nextRound.start(); 
-			}
+					if(sequenceIndex == sequence.size()){
+						Thread nextRound = new Thread(SimonScreenKatherine.this);
+						nextRound.start(); 
+					}
+				}
+				
+			});	
+			
 			viewObjects.add(b);
 		}
 	}
 
 	private ButtonInterfaceKatherine getAButton() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Button();
 	}
 
 }

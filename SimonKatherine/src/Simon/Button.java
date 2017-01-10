@@ -13,10 +13,15 @@ public class Button extends Component implements ButtonInterfaceKatherine {
 		super(x, y, w, h);
 	}
 
+	public Button() {
+		super(0, 0, 100, 100);
+	}
+
 	private Color color;
 	private Color displayColor;
 	private int x;
 	private int y;
+	private Action action;
 	
 	public void setX(int x) {
 		this.x = x;
@@ -54,26 +59,25 @@ public class Button extends Component implements ButtonInterfaceKatherine {
 
 	@Override
 	public void act() {
-		// TODO Auto-generated method stub
-		
+		action.act();
 	}
 
 	@Override
-	public boolean isHovered(int arg0, int arg1) {
-		// TODO Auto-generated method stub
+	public boolean isHovered(int x, int y) {
+		if(x > 0 && x < getX() + getWidth() && y > 0 && y < getY() + getHeight()){
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public void setAction(Action a) {
-		// TODO Auto-generated method stub
-		
+		action = a;
 	}
 
 	@Override
 	public void dim() {
-		// TODO Auto-generated method stub
-		
+		update();
 	}
 
 }

@@ -15,6 +15,10 @@ public class Progress extends Component implements ProgressInterfaceKatherine {
 		super(x, y, width, height);
 	}
 	
+	public Progress() {
+		super(0, 0, 50, 50);
+	}
+
 	public void gameOver() {
 		gameOver = true;
 	}
