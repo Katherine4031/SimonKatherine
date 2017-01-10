@@ -19,20 +19,10 @@ public class Button extends Component implements ButtonInterfaceKatherine {
 
 	private Color color;
 	private Color displayColor;
-	private int x;
-	private int y;
 	private Action action;
 	private static int width = 50;
 	private static int height = 50;
 	
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	@Override
-	public void setY(int y) {
-		this.y = y;
-	}
 
 	@Override
 	public void setColor(Color c) {
@@ -66,10 +56,8 @@ public class Button extends Component implements ButtonInterfaceKatherine {
 
 	@Override
 	public boolean isHovered(int x, int y) {
-		if(x > 0 && x < getX() + getWidth() && y > 0 && y < getY() + getHeight()){
-			return true;
-		}
-		return false;
+		double distance = Math.sqrt(Math.pow(x-(getX()+width/2), 2)+Math.pow(y-(getY()+height/2), 2));
+		return distance < width/2;
 	}
 
 	@Override
