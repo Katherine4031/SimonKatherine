@@ -9,7 +9,7 @@ import gui.components.Component;
 public class Progress extends Component implements ProgressInterfaceKatherine {
 
 	public Progress() {
-		super(15, 45, width, height);
+		super(40, 45, width, height);
 	}
 
 	private int round;
@@ -21,16 +21,19 @@ public class Progress extends Component implements ProgressInterfaceKatherine {
 	
 	public void gameOver() {
 		gameOver = true;
+		update();
 	}
 
 	@Override
 	public void setRound(int r) {
 		round = r;
+		update();
 	}
 
 	@Override
 	public void setSequence(int s) {
 		sequence = s;
+		update();
 	}
 
 	@Override
@@ -51,8 +54,8 @@ public class Progress extends Component implements ProgressInterfaceKatherine {
 			g.drawRect(0, 0, getWidth()-1, getHeight()-1);
 			if(Integer.toString(round) !=null && Integer.toString(sequence) != null){
 
-				g.drawString(Integer.toString(round), (getWidth())/2, 20);
-				g.drawString(Integer.toString(sequence), (getWidth())/2, 40);
+				g.drawString("Round " + Integer.toString(round), (getWidth())/2, 20);
+				g.drawString("Sequence " + Integer.toString(sequence), (getWidth())/2, 40);
 			}
 		}
 	}

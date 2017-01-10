@@ -91,12 +91,15 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 	}
 
 	private MoveInterfaceKatherine randomMove() {
-		ButtonInterfaceKatherine b = new Button(0, 0, 100, 100);
+		ButtonInterfaceKatherine b;
 		int rndIdx = (int)(Math.random()*button.length);
 		
 		while(rndIdx == lastSelectedButton){
 			rndIdx = (int)(Math.random()*button.length);
 		}
+		
+		b = button[rndIdx];
+		lastSelectedButton = rndIdx;
 		return new Move(b);
 	}
 
