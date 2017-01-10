@@ -117,6 +117,7 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 			button[i].setY(200);
 			
 			final ButtonInterfaceKatherine b = button[i];
+			b.dim();
 			
 			button[i].setAction(new Action(){
 

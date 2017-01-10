@@ -66,6 +66,7 @@ public class Button extends Component implements ButtonInterfaceKatherine {
 
 	@Override
 	public void dim() {
+		displayColor = Color.gray;
 		update();
 	}
 
