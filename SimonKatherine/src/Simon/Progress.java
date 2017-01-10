@@ -11,8 +11,10 @@ public class Progress extends Component implements ProgressInterfaceKatherine {
 	private int round;
 	private int sequence;
 	private boolean gameOver;
-	public Progress(int x, int y, int width, int height){
-		super(x, y, width, height);
+	private final int WIDTH;
+	private final int HEIGHT;
+	public Progress(){
+		super(50, 70, WIDTH, HEIGHT);
 	}
 	
 	public Progress() {
