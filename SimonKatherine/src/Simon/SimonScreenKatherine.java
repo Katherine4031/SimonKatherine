@@ -113,8 +113,8 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 			button[i] = getAButton();
 			button[i].setColor(colors[i]);
 			//change position of i
-			button[i].setX(0);
-			button[i].setY(0);
+			button[i].setX((50*i) + 100);
+			button[i].setY(200);
 			
 			final ButtonInterfaceKatherine b = button[i];
 			

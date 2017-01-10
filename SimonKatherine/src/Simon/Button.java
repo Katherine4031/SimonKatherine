@@ -14,7 +14,7 @@ public class Button extends Component implements ButtonInterfaceKatherine {
 	}
 
 	public Button() {
-		super(0, 0, 100, 100);
+		super(0, 0, width, height);
 	}
 
 	private Color color;
@@ -22,6 +22,8 @@ public class Button extends Component implements ButtonInterfaceKatherine {
 	private int x;
 	private int y;
 	private Action action;
+	private static int width = 50;
+	private static int height = 50;
 	
 	public void setX(int x) {
 		this.x = x;
@@ -52,9 +54,9 @@ public class Button extends Component implements ButtonInterfaceKatherine {
 		else 
 			g.setColor(Color.gray);
 		
-		g.fillOval(0, 0, getWidth(), getHeight());
+		g.fillOval(0, 0, width, height);
 		g.setColor(Color.black);
-		g.drawOval(0, 0, getWidth()-1, getHeight()-1);
+		g.drawOval(0, 0, width-1, height-1);
 		}
 
 	@Override

@@ -8,19 +8,17 @@ import gui.components.Component;
 
 public class Progress extends Component implements ProgressInterfaceKatherine {
 
+	public Progress() {
+		super(15, 45, width, height);
+	}
+
 	private int round;
 	private int sequence;
 	private boolean gameOver;
-	private final int WIDTH;
-	private final int HEIGHT;
-	public Progress(){
-		super(50, 70, WIDTH, HEIGHT);
-	}
-	
-	public Progress() {
-		super(0, 0, 50, 50);
-	}
+	private static int width = 115;
+	private static int height = 70;
 
+	
 	public void gameOver() {
 		gameOver = true;
 	}
