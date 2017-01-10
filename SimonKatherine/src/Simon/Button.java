@@ -27,7 +27,6 @@ public class Button extends Component implements ButtonInterfaceKatherine {
 	@Override
 	public void setColor(Color c) {
 		color = c;
-		displayColor = c;
 		update();
 	}
 
