@@ -15,7 +15,7 @@ public class Progress extends Component implements ProgressInterfaceKatherine {
 	private int round;
 	private int sequence;
 	private boolean gameOver;
-	private static int width = 115;
+	private static int width = 200;
 	private static int height = 70;
 
 	
@@ -44,8 +44,8 @@ public class Progress extends Component implements ProgressInterfaceKatherine {
 			g.fillRect(0, 0, getWidth(), getHeight());
 			g.setColor(Color.white);
 			String go = "GAME OVER!";
-			g.drawString(go, (getWidth())/2, 20);
-			g.drawString(Integer.toString(sequence), (int)(getWidth())/2, 40);
+			g.drawString(go, ((getWidth())/2)-50, 20);
+			g.drawString("Sequence Length: " + Integer.toString(sequence), ((getWidth())/2)-50, 40);
 
 		}else{
 			g.setColor(new Color(220,255,230));
@@ -54,8 +54,8 @@ public class Progress extends Component implements ProgressInterfaceKatherine {
 			g.drawRect(0, 0, getWidth()-1, getHeight()-1);
 			if(Integer.toString(round) !=null && Integer.toString(sequence) != null){
 
-				g.drawString("Round " + Integer.toString(round), (getWidth())/2, 20);
-				g.drawString("Sequence " + Integer.toString(sequence), (getWidth())/2, 40);
+				g.drawString("Round " + Integer.toString(round), ((getWidth())/2)-20, 20);
+				g.drawString("Sequence " + Integer.toString(sequence), ((getWidth())/2)-20, 40);
 			}
 		}
 	}

@@ -10,12 +10,12 @@ import gui.components.Visible;
 import gui.components.ClickableScreen;
 
 public class SimonScreenKatherine extends ClickableScreen implements Runnable {
-	
+
 	private TextLabel label;
 	private ButtonInterfaceKatherine[] button;
 	private ProgressInterfaceKatherine progress;
 	private ArrayList<MoveInterfaceKatherine> sequence;
-	
+
 	private int roundNumber;
 	private boolean acceptingInput;
 	private int sequenceIndex;
@@ -29,8 +29,8 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 
 	@Override
 	public void run() {
-		 label.setText("");
-		 nextRound();
+		label.setText("");
+		nextRound();
 	}
 
 	private void nextRound() {
@@ -52,10 +52,10 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 			if(b != null){
 				b.dim();
 			}
-			
+
 			b = m.getButton();
 			b.highlight();
-			
+
 			try{
 				Thread.sleep(1000);
 			}catch(InterruptedException e){
@@ -93,11 +93,11 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 	private MoveInterfaceKatherine randomMove() {
 		ButtonInterfaceKatherine b;
 		int rndIdx = (int)(Math.random()*button.length);
-		
+
 		while(rndIdx == lastSelectedButton){
 			rndIdx = (int)(Math.random()*button.length);
 		}
-		
+
 		b = button[rndIdx];
 		lastSelectedButton = rndIdx;
 		return new Move(b);
@@ -118,14 +118,14 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 			//change position of i
 			button[i].setX(50*i + 100);
 			button[i].setY(200);
-			
+
 			final ButtonInterfaceKatherine b = button[i];
 			b.dim();
-			
+
 			button[i].setAction(new Action(){
 
 				public void act(){
-					
+
 					if(acceptingInput){
 						Thread blink = new Thread(new Runnable(){
 
@@ -138,27 +138,26 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 								}
 								b.dim();
 							}	
-					
+
 						});
 						blink.start();
 					}
-			
-					if(b == sequence.get(sequenceIndex).getButton()){
+
+					if(b == sequence.get(sequenceIndex).getButton()&&acceptingInput){
 						sequenceIndex++;
 					}
-					else{
+					else if(acceptingInput){
 						progress.gameOver();
-						return;
+						acceptingInput = false;
 					}
-			
 					if(sequenceIndex == sequence.size()){
 						Thread nextRound = new Thread(SimonScreenKatherine.this);
-						nextRound.start(); 
+						nextRound.start();
 					}
 				}
-				
+
 			});	
-			
+
 			viewObjects.add(b);
 		}
 	}
