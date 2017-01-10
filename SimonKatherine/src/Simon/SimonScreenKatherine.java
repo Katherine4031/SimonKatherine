@@ -68,8 +68,8 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 
 	private void changeText(String s) {
 		try{
-			Thread.sleep(1000);
 			label.setText(s);
+			Thread.sleep(1000);
 		}
 		catch(InterruptedException e){
 			e.printStackTrace();
