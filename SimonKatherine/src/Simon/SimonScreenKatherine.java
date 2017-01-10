@@ -56,7 +56,6 @@ public class SimonScreenKatherine extends ClickableScreen implements Runnable {
 			b = m.getButton();
 			b.highlight();
 			
-			int sleepTime;
 			try{
 				Thread.sleep(1000);
 			}catch(InterruptedException e){

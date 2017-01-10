@@ -6,6 +6,7 @@ public class SimonGameKatherine extends GUIApplication {
 
 	public SimonGameKatherine() {
 		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	@Override
